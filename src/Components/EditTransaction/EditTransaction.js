@@ -41,6 +41,16 @@ function EditTransaction() {
       [e.target.id]: e.target.value,
     });
   }
+
+  function handleSelectChange(event) {
+    const selectedValue = event.target.value;
+
+    setSelectedTransaction({
+      ...selectedTransaction,
+      type: selectedValue,
+    });
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -116,6 +126,20 @@ function EditTransaction() {
             onChange={handleTextChange}
             required
           />
+        </div>
+
+        <div className="form-group">
+          <label>Type:</label>
+          <select
+            id="type"
+            value={selectedTransaction.type}
+            onChange={handleSelectChange}
+            required
+          >
+            <option value="">Select a type</option>
+            <option value="income">Income</option>
+            <option value="expenses">Expenses</option>
+          </select>
         </div>
 
         <button>Submit</button>

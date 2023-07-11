@@ -40,6 +40,7 @@ function NewTransaction() {
       );
       setNewTransaction({});
       navigate("/transactions");
+      console.log(result.data);
     } catch (error) {
       console.log(error);
     }

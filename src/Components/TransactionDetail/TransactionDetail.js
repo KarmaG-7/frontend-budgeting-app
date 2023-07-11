@@ -9,6 +9,7 @@ function TransactionDetail() {
   const [showDetails, setShowDetails] = useState({});
   const navigate = useNavigate();
 
+  //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchDetail();
   }, []);

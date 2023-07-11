@@ -11,10 +11,6 @@ function TransactionsList() {
   }, []);
 
   async function fetchData() {
-    let url =
-      process.env.NODE_ENV === "production"
-        ? "Your render.com address"
-        : "localhost:3001";
     try {
       let result = await axios.get("http://localhost:3001/transactions");
       setTransactions(result.data);

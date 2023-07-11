@@ -18,6 +18,7 @@ function EditTransaction() {
 
   useEffect(() => {
     fetchDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function fetchDetail() {
@@ -42,6 +43,7 @@ function EditTransaction() {
         `http://localhost:3001/transactions/${id}/edit`,
         selectedTransaction
       );
+      console.log(result.data);
       alert("UPDATED");
       navigate("/transactions");
     } catch (error) {

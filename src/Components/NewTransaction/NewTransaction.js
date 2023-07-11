@@ -18,7 +18,8 @@ function NewTransaction() {
   function handleTextChange(e) {
     setNewTransaction({
       ...newTransaction,
-      [e.target.id]: e.target.value,
+      [e.target.id]:
+        e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
     });
   }
 
@@ -114,8 +115,8 @@ function NewTransaction() {
             required
           >
             <option value="">Select a type</option>
-            <option value="income">Income</option>
-            <option value="expenses">Expenses</option>
+            <option value="Income">Income</option>
+            <option value="Expenses">Expenses</option>
           </select>
         </div>
 

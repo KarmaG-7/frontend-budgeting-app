@@ -137,8 +137,8 @@ function EditTransaction() {
             required
           >
             <option value="">Select a type</option>
-            <option value="income">Income</option>
-            <option value="expenses">Expenses</option>
+            <option value="Income">Income</option>
+            <option value="Expenses">Expenses</option>
           </select>
         </div>
 

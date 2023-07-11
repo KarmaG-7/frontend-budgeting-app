@@ -13,7 +13,12 @@ function TransactionsList() {
 
   async function fetchData() {
     try {
-      let result = await axios.get("http://localhost:3001/transactions");
+      let url =
+        process.env.NODE_ENV === "production"
+          ? "https://backend-budgeting-app-ekrg.onrender.com/transactions"
+          : "http://localhost:3001/transactions";
+
+      let result = await axios.get(url);
       setTransactions(result.data);
       console.log(result.data);
     } catch (error) {

@@ -16,7 +16,12 @@ function TransactionDetail() {
 
   async function fetchDetail() {
     try {
-      let result = await axios.get(`http://localhost:3001/transactions/${id}`);
+      let url =
+        process.env.NODE_ENV === "production"
+          ? `https://backend-budgeting-app-ekrg.onrender.com/transactions/${id}`
+          : `http://localhost:3001/transactions/${id}`;
+
+      let result = await axios.get(url);
       setShowDetails(result.data);
       console.log(result.data);
     } catch (error) {

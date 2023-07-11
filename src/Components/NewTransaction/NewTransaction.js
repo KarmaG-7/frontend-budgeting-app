@@ -33,11 +33,14 @@ function NewTransaction() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     try {
-      let result = await axios.post(
-        "http://localhost:3001/transactions",
-        newTransaction
-      );
+      let url =
+        process.env.NODE_ENV === "production"
+          ? "https://backend-budgeting-app-ekrg.onrender.com/transactions"
+          : "http://localhost:3001/transactions";
+
+      let result = await axios.post(url, newTransaction);
       setNewTransaction({});
       navigate("/transactions");
       console.log(result.data);

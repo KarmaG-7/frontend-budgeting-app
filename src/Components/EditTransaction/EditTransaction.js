@@ -23,7 +23,12 @@ function EditTransaction() {
 
   async function fetchDetail() {
     try {
-      let result = await axios.get(`http://localhost:3001/transactions/${id}`);
+      let url =
+        process.env.NODE_ENV === "production"
+          ? `https://backend-budgeting-app-ekrg.onrender.com/transactions/${id}`
+          : `http://localhost:3001/transactions/${id}`;
+
+      let result = await axios.get(url);
       setSelectedTransaction(result.data);
     } catch (error) {
       console.log(error);
@@ -38,11 +43,14 @@ function EditTransaction() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
+
+    let url =
+      process.env.NODE_ENV === "production"
+        ? `https://backend-budgeting-app-ekrg.onrender.com/transactions/${id}/edit`
+        : `http://localhost:3001/transactions/${id}/edit`;
+
     try {
-      let result = await axios.put(
-        `http://localhost:3001/transactions/${id}/edit`,
-        selectedTransaction
-      );
+      let result = await axios.put(url, selectedTransaction);
       console.log(result.data);
       alert("UPDATED");
       navigate("/transactions");

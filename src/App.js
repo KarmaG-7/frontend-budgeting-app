@@ -17,6 +17,7 @@ function App() {
 
         <Routes>
           <Route path="/transactions" element={<TransactionsList />}></Route>
+          <Route path="/" element={<TransactionsList />}></Route>
           <Route path="/transactions/new" element={<NewTransaction />}></Route>
           <Route
             path="/transactions/:id"
